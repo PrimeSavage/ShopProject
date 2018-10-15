@@ -167,8 +167,14 @@ public class Controller {
     }
 
     public void onBuy() {
-        tblView2.setItems(null);
-        paymentLabel.setText("Заказ принят!");
+        if(!tblView2.getItems().isEmpty()) {
+            tblView2.getItems().removeAll(tblView2.getItems());
+            tblView2.refresh();
+            paymentLabel.setText("Заказ принят!");
+            pmnt = 0;
+            n = 0;
+        }
+        else paymentLabel.setText("Нечего заказывать");
     }
     private boolean result = true;
     public void onAdminSelect(){
